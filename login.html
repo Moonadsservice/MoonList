@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoonList – Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container" id="loginContainer">
+    <h1>🌙 Welcome to MoonList</h1>
+    <p>Start planning your day with peace.</p>
+    <input type="text" id="username" placeholder="Enter your name" />
+    <button onclick="login()">Continue</button>
+  </div>
+
+  <div class="container" id="loadingContainer" style="display: none;">
+    <h2>Loading MoonList...</h2>
+    <div class="loader"></div>
+  </div>
+
+  <script>
+    function login() {
+      const name = document.getElementById("username").value.trim();
+      if (name !== "") {
+        localStorage.setItem("moonUser", name);
+        document.getElementById("loginContainer").style.display = "none";
+        document.getElementById("loadingContainer").style.display = "block";
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 2000);
+      } else {
+        alert("Please enter your name");
+      }
+    }
+  </script>
+</body>
+</html>
